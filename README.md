@@ -9,18 +9,17 @@ This assignment introduces you to writing, compiling, and running a basic C prog
 ## Exercise Files:
 | Folder | File Name | Description |
 |:------:|:---------:|:-----------:|
-| `src`  | `hello.c` | Implement the main function to print "Hello World" |
-| `include` | `hello.h` | (Optional) Header file if additional declarations are needed |
+| `src`  | `exercise.c` | Implement the main function to print "Hello World" |
 
 ## Instructions:
 1. **Implement the program**:
-   - In `src/hello.c`, write a C program that uses `printf` to output "Hello World" followed by a newline (`\n`).
+   - In `src/exercise.c`, write a C program that uses `printf` to output "Hello World" followed by a newline (`\n`).
 2. **Set up a C compiler**:
    - **Linux**: Install `build-essential` using `sudo apt install build-essential`.
    - **macOS**: Install Xcode command-line tools with `xcode-select --install`.
    - **Windows**: Install MinGW or use WSL with `build-essential`.
 3. **Compile and run**:
-   - Compile: `gcc -o hello src/hello.c`
+   - Compile: `gcc -o hello src/exercise.c`
    - Run: `./hello`
 4. **Optional testing**:
    - Install Google Test for unit testing: `sudo apt install libgtest-dev` (Linux).
@@ -38,7 +37,7 @@ Hello World
 ```
 
 ## Tips:
-- Ensure you include `<stdio.h>` in `hello.c` for `printf`.
+- Ensure you include `<stdio.h>` in `exercise.c` for `printf`.
 - Use `gdb` for debugging: `gdb ./hello`, then set breakpoints with `break main` and run with `run`.
 - Check for compilation errors and ensure the output matches exactly "Hello World" with a newline.
 - Avoid extra spaces or characters in the output.
