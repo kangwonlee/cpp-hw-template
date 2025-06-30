@@ -1,4 +1,4 @@
-# begin .github/workflows/build-test.yml
+# begin .github/workflows/classroom.yml
 
 name: Build and Test
 
@@ -170,4 +170,4 @@ jobs:
           ${{ env.WORKSPACE_OUTPUT }}/*.json
           ${{ env.WORKSPACE_OUTPUT }}/feedback.md
 
-# end .github/workflows/build-test.yml
+# end .github/workflows/classroom.yml
