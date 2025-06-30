@@ -24,10 +24,6 @@ This assignment introduces you to writing, compiling, and running a basic C prog
 4. **Optional testing**:
    - Install Google Test for unit testing: `sudo apt install libgtest-dev` (Linux).
    - Check the `.github/workflows/build-test.yml` for CI setup.
-5. **GitHub Actions**:
-   - The `build-test.yml` is located in `.github/workflows/`.
-   - Configure `vars.CPP_GRADER_???` in repository settings (Settings > Secrets and Variables > Actions > Variables) with your grader image (e.g., `ghcr.io/your-org/cpp-pytest:latest`).
-   - Set feedback language in `build-test.yml` (e.g., `INPUT_EXPLANATION-IN: "English"`).
 
 ## Example Run:
 * **Input**: None (no user input required).
