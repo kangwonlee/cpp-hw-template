@@ -33,7 +33,7 @@ jobs:
     - name: Set Image URL
       id: image
       run: |
-        echo "image_url=${{ vars.CPP_GRADER_??? }}" >> $GITHUB_ENV
+        echo "image_url=${{ vars.CPP_TEST_010 }}" >> $GITHUB_ENV
 
     - name: Log image URL
       run: |
