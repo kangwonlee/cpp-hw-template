@@ -19,7 +19,7 @@ jobs:
       results: test_results.json
       CONTAINER_SRC: /app/workspace/src
       CONTAINER_INC: /app/workspace/include
-      C_FILENAME: exercise.c
+      C_FILENAME: main.c
 
     steps:
     - uses: actions/checkout@v4

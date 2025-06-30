@@ -9,17 +9,17 @@ This assignment introduces you to writing, compiling, and running a basic C prog
 ## Exercise Files:
 | Folder | File Name | Description |
 |:------:|:---------:|:-----------:|
-| `src`  | `exercise.c` | Implement the main function to print "Hello World" |
+| `src`  | `main.c` | Implement the main function to print "Hello World" |
 
 ## Instructions:
 1. **Implement the program**:
-   - In `src/exercise.c`, write a C program that uses `printf` to output "Hello World" followed by a newline (`\n`).
+   - In `src/main.c`, write a C program that uses `printf` to output "Hello World" followed by a newline (`\n`).
 2. **Set up a C compiler**:
    - **Linux**: Install `build-essential` using `sudo apt install build-essential`.
    - **macOS**: Install Xcode command-line tools with `xcode-select --install`.
    - **Windows**: Install MinGW or use WSL with `build-essential`.
 3. **Compile and run**:
-   - Compile: `gcc -o hello src/exercise.c`
+   - Compile: `gcc -o hello src/main.c`
    - Run: `./hello`
 4. **Optional testing**:
    - Install Google Test for unit testing: `sudo apt install libgtest-dev` (Linux).
@@ -37,7 +37,7 @@ Hello World
 ```
 
 ## Tips:
-- Ensure you include `<stdio.h>` in `exercise.c` for `printf`.
+- Ensure you include `<stdio.h>` in `main.c` for `printf`.
 - Use `gdb` for debugging: `gdb ./hello`, then set breakpoints with `break main` and run with `run`.
 - Check for compilation errors and ensure the output matches exactly "Hello World" with a newline.
 - Avoid extra spaces or characters in the output.
@@ -60,7 +60,7 @@ Hello World
 
 ## How to Use the GitHub Online Editor
 * Press the <kbd>.</kbd> key while viewing the files in your repository on GitHub. This will launch a web version of VS Code.
-* Make your changes to the `exercise.c` (or `exercise.cpp`) file.
+* Make your changes to the `main.c` (or `main.cpp`) file.
 * To commit your changes, click on the branch icon on the left sidebar (the third icon after the magnifying glass).
 * Click the "+" sign next to the filename to stage your changes.
 * Write a brief description of your changes in the text box above.
@@ -77,7 +77,7 @@ Hello World
 * Avoid Vague Messages: Messages like "update" or "fix" can be too general.
 * Keep It Concise: Aim for 15-50 characters, but ensure clarity.
 * Examples:
-  * Good: "Add unit tests for factorial function in exercise.cpp"
+  * Good: "Add unit tests for factorial function in main.cpp"
   * Bad: "update", "fix 1", "changed file"
 
 ### Why It Matters
