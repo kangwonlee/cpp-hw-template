@@ -1,0 +1,173 @@
+# begin .github/workflows/build-test.yml
+
+name: Build and Test
+
+on:
+  push:
+  workflow_dispatch:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    env:
+      CONTAINER_WORKSPACE: /app/workspace
+      CONTAINER_TESTS: /tests
+      build: check_build.json
+      style: check_style.json
+      results: test_results.json
+      CONTAINER_SRC: /app/workspace/src
+      CONTAINER_INC: /app/workspace/include
+      C_FILENAME: exercise.c
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set Short SHA
+      id: short_sha
+      run: |
+        SHORT_SHA=$(echo $GITHUB_SHA | cut -c1-7)
+        echo "SHORT_SHA=$SHORT_SHA" >> $GITHUB_ENV
+
+    - name: Set Image URL
+      id: image
+      run: |
+        echo "image_url=${{ vars.CPP_GRADER_??? }}" >> $GITHUB_ENV
+
+    - name: Log image URL
+      run: |
+        echo "Using IMAGE_URL: ${{ env.image_url }}"
+
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.CR_PAT }}
+
+    - name: Pull Grader Image
+      run: docker pull ${{ env.image_url }}
+
+    - name: Make output folder for the container
+      run: |
+        OUTPUT_NAME=output
+        OUTPUT_FOLDER=${{ runner.temp }}/$OUTPUT_NAME
+        mkdir $OUTPUT_FOLDER
+        if [ -d "$OUTPUT_FOLDER" ]; then
+          echo "Folder $OUTPUT_FOLDER exists."
+        else
+          echo "Error: Folder $OUTPUT_FOLDER does not exist."
+          exit 1
+        fi
+        if [ -w "$OUTPUT_FOLDER" ]; then
+          echo "Folder $OUTPUT_FOLDER is writable."
+        else
+          echo "Error: Folder $OUTPUT_FOLDER is not writable."
+          exit 1
+        fi
+        # chown runner $OUTPUT_FOLDER
+        echo "WORKSPACE_OUTPUT=$OUTPUT_FOLDER" >> $GITHUB_ENV
+        echo "CONTAINER_OUTPUT=/$OUTPUT_NAME" >> $GITHUB_ENV
+
+    - name: Check Build
+      id: check-build
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: check build
+        command: |
+          docker run --rm --user 1001:1001 \
+            --network none \
+            --volume ${{ github.workspace }}:${{ env.CONTAINER_WORKSPACE }}:ro \
+            --volume ${{ env.WORKSPACE_OUTPUT }}:${{ env.CONTAINER_OUTPUT }}:rw \
+            --workdir ${{ env.CONTAINER_TESTS }} \
+            --env STUDENT_SRC_FOLDER=${{ env.CONTAINER_SRC }} \
+            --env C_INCLUDE_PATH=${{ env.CONTAINER_INC }} \
+            --env C_FILENAME=${{ env.C_FILENAME }} \
+            ${{ env.image_url }} \
+            python3 -m pytest --json-report --json-report-indent=4 --json-report-file=${{ env.CONTAINER_OUTPUT }}/${{ env.build }} test_build.py
+        timeout: 2
+        max-score: 2
+
+    - name: Check Style
+      id: check-style
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: check style
+        command: |
+          docker run --rm --user 1001:1001 \
+            --network none \
+            --volume ${{ github.workspace }}:${{ env.CONTAINER_WORKSPACE }}:ro \
+            --volume ${{ env.WORKSPACE_OUTPUT }}:${{ env.CONTAINER_OUTPUT }}:rw \
+            --workdir ${{ env.CONTAINER_TESTS }} \
+            --env GITHUB_WORKSPACE=${{ env.CONTAINER_WORKSPACE }} \
+            --env STUDENT_SRC_FOLDER=${{ env.CONTAINER_SRC }} \
+            --env C_FILENAME=${{ env.C_FILENAME }} \
+            ${{ env.image_url }} \
+            python3 -m pytest --json-report --json-report-indent=4 --json-report-file=${{ env.CONTAINER_OUTPUT }}/${{ env.style }} test_style.py test_commit_msg.py
+        timeout: 2
+        max-score: 1
+
+    - name: Test Results
+      id: test-results
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test results
+        command: |
+          docker run --rm --user 1001:1001 \
+            --network none \
+            --volume ${{ github.workspace }}:${{ env.CONTAINER_WORKSPACE }}:ro \
+            --volume ${{ env.WORKSPACE_OUTPUT }}:${{ env.CONTAINER_OUTPUT }}:rw \
+            --workdir ${{ env.CONTAINER_TESTS }} \
+            ${{ env.image_url }} \
+            /bin/sh -c "cmake . -DCMAKE_BUILD_TYPE=Debug -DSTUDENT_DIR=${{ env.CONTAINER_WORKSPACE }} && make && python3 -m pytest --json-report --json-report-indent=4 --json-report-file=${{ env.CONTAINER_OUTPUT }}/${{ env.results }} test_dynamic.py"
+        timeout: 2
+        max-score: 2
+
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        CHECK-BUILD_RESULTS: "${{steps.check-build.outputs.result}}"
+        CHECK-STYLE_RESULTS: "${{steps.check-style.outputs.result}}"
+        TEST-RESULTS_RESULTS: "${{steps.test-results.outputs.result}}"
+      with:
+        runners: check-build,check-style,test-results
+
+    - name: AI Tutor
+      id: ai-tutor
+      if: always()
+      run: |
+        docker run --rm --user 1001:1001 \
+          --volume ${{ github.workspace }}:${{ env.CONTAINER_WORKSPACE }}:ro \
+          --volume ${{ env.WORKSPACE_OUTPUT }}:${{ env.CONTAINER_OUTPUT }}:ro \
+          --env INPUT_REPORT-FILES="${{ env.CONTAINER_OUTPUT }}/${{ env.results }},${{ env.CONTAINER_OUTPUT }}/${{ env.build }},${{ env.CONTAINER_OUTPUT }}/${{ env.style }}" \
+          --env INPUT_STUDENT-FILES="${{ env.CONTAINER_SRC }}/${{ env.C_FILENAME }}"\
+          --env INPUT_README-PATH="${{ env.CONTAINER_WORKSPACE }}/README.md" \
+          --env INPUT_CLAUDE_API_KEY="${{ secrets.CLAUDE_API_KEY }}" \
+          --env INPUT_GEMINI-API-KEY="${{ secrets.GOOGLE_API_KEY }}" \
+          --env INPUT_GROK-API-KEY="${{ secrets.XAI_API_KEY }}" \
+          --env INPUT_NVIDIA-API-KEY="${{ secrets.NVIDIA_NIM_API_KEY }}" \
+          --env INPUT_PERPLEXITY-API-KEY="${{ secrets.PERPLEXITY_API_KEY }}" \
+          --env INPUT_GITHUB_REPOSITORY="${{ github.repository }}" \
+          --env INPUT_MODEL="${{ secrets.DEFAULT_MODEL }}" \
+          --env INPUT_EXPLANATION-IN="English" \
+          ${{ env.image_url }} \
+          python3 ai_tutor/entrypoint.py > ${{ env.WORKSPACE_OUTPUT }}/feedback.md
+      timeout-minutes: 10
+
+    - name: forward feedback to summary
+      if: always()
+      run: |
+        cat ${{ env.WORKSPACE_OUTPUT }}/feedback.md >> $GITHUB_STEP_SUMMARY
+
+    - name: Upload Test Report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: artifacts-${{ env.SHORT_SHA }}
+        path: |
+          ${{ env.WORKSPACE_OUTPUT }}/*.png
+          ${{ env.WORKSPACE_OUTPUT }}/*.json
+          ${{ env.WORKSPACE_OUTPUT }}/feedback.md
+
+# end .github/workflows/build-test.yml
