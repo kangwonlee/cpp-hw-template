@@ -1,55 +1,71 @@
-# C Homework Template
-Please work on: `exercise.cpp`
+# C/C++ Homework Template
 
 ## Purpose:
-Learn to implement and test a mathematical function in C/C++, focusing on basic control structures and integer arithmetic.
+Learn to implement and test the dynamic memory management in C/C++.
 
 ## Description:
-Implement the `factorial` function in `exercise.cpp` to compute the factorial of a given non-negative integer `n` (0 ≤ n ≤ 20). The function should return the result as a `uint64_t`. For example, `factorial(5)` should return `120`.
+* Please implement following functions
+
+| function name | input argument(s) | return value type | description |
+|:-----------:|:-----------:|:-----------:|:-----------:|
+| `allocate_integer` | integer `value` | a pointer to an int  | Allocate one integer and initialize with `value` |
+| `deallocate_integer` | a pointer to an int | none | deallocate memory that the input argument is pointing to |
+
+## Exercise files
+* Please modify following files
+
+| folder | file name | description |
+|:-----------:|:-----------:|:-----------:|
+| `src` | `exercise.c` | please implement functions here |
+| `include` | `exercise.h` | please add function prototypes here |
 
 ## Instructions:
-* Implement the `factorial` function in `exercise.cpp`.
-* Use `make` to build the project and `make test` to run tests locally.
+* Implement the files above.
 * Set up a C/C++ compiler:
   - **Linux**: `sudo apt install build-essential`
   - **macOS**: `xcode-select --install`
   - **Windows**: Install MinGW or use WSL with `build-essential`.
-* Optionally, install Google Test for local testing: `sudo apt install libgtest-dev` (Linux).
-* The `classroom.yml` file is at `.github/workflows/`. The `.github` folder is hidden on Linux but visible on the GitHub repository.
-* Set `vars.C_GRADER_URL` in `classroom.yml` in the repository settings (Settings > Secrets and Variables > Actions > Variables) to your grader image (e.g., `ghcr.io/your-org/cpp-pytest:latest`).
-* Set your AI feedback natural language in `classroom.yml` (e.g., `INPUT_EXPLANATION-IN: "English"`).
+* Optionally, consider install Google Test for local testing: `sudo apt install libgtest-dev` (Linux).
+* The `build-test.yml` file is at `.github/workflows/`. The `.github` folder is hidden on Linux but visible on the GitHub repository.
+* Set `vars.CPP_GRADER_???` in `build-test.yml` in the repository settings (Settings > Secrets and Variables > Actions > Variables) to your grader image (e.g., `ghcr.io/your-org/cpp-pytest:latest`).
+* Set your AI feedback natural language in `build-test.yml` (e.g., `INPUT_EXPLANATION-IN: "English"`).
 
 ## Example Run:
 * input
+Please add sample console input for your program here.
 ```
-Enter a number: 5
+<prompt>: <value>
 ```
 * output
+Please add sample console output for your program here.
 ```
-Factorial of 5 is 120
+<sample output>
 ```
 
 ## Tips:
-* Use `gdb` for debugging: Run `gdb ./factorial` and use commands like `break factorial` and `run`.
-* Ensure your function handles edge cases like `n = 0` (should return 1).
-* Avoid integer overflow by using `uint64_t` for the result.
+* Consider using `gdb` or other debuggers: Run `gdb ./<executable name>` and use commands like `break <function name>` and `run`.
+* Ensure your function handles edge cases.
+* Avoid undefined behaviors for the result.
 
 __Happy coding!__
 
 ## Grading Criteria
 | Criteria | Points |
 |:--------:|:------:|
-| Is the code written according to C/C++ syntax? | 3 |
-| Does the code satisfy the requirements? | 2 |
+| Is the build successful? | 2 |
+| Does the code follow coding style? | 1 |
+| Does the code pass the dynamic tests? | 2 |
+
+``Until here is common to all assignments.``
 
 ## Submission
-1. Modify the contents of the `exercise.cpp` file to write your program.
+1. Modify the contents of the required file per instructions.
 2. Use the GitHub online editor to commit and push your changes. (See below for detailed instructions)
 3. At the Actions tab of your GitHub repository, please check the result.
 
 ## How to Use the GitHub Online Editor
 * Press the <kbd>.</kbd> key while viewing the files in your repository on GitHub. This will launch a web version of VS Code.
-* Make your changes to the `exercise.cpp` file.
+* Make your changes to the `exercise.c` (or `exercise.cpp`) file.
 * To commit your changes, click on the branch icon on the left sidebar (the third icon after the magnifying glass).
 * Click the "+" sign next to the filename to stage your changes.
 * Write a brief description of your changes in the text box above.
@@ -82,3 +98,10 @@ __Happy coding!__
 
 ## Acknowledgments
 * The template for this assignment is registered as a part of #C-2025-016393 in the Korea Copyright Commission.
+* Various LLMs and AI tools helped implemeting the templates for this assignment.
+  * Google Gemini Flash / Pro 2.5
+  * xAI Grok3
+  * Perplexity Sonar
+  * Claude.ai 4.0 Sonnet
+
+``Until here is common to all assignments.``
