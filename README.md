@@ -1,60 +1,56 @@
-# C/C++ Homework Template
+# C Hello World Assignment
 
 ## Purpose:
-Learn to implement and test the dynamic memory management in C/C++.
+Learn the basics of C programming by creating a simple program that prints "Hello World" to the console.
 
 ## Description:
-* Please implement following functions
+This assignment introduces you to writing, compiling, and running a basic C program. You will create a program that outputs the string "Hello World" to the console.
 
-| function name | input argument(s) | return value type | description |
-|:-----------:|:-----------:|:-----------:|:-----------:|
-| `allocate_integer` | integer `value` | a pointer to an int  | Allocate one integer and initialize with `value` |
-| `deallocate_integer` | a pointer to an int | none | deallocate memory that the input argument is pointing to |
-
-## Exercise files
-* Please modify following files
-
-| folder | file name | description |
-|:-----------:|:-----------:|:-----------:|
-| `src` | `exercise.c` | please implement functions here |
-| `include` | `exercise.h` | please add function prototypes here |
+## Exercise Files:
+| Folder | File Name | Description |
+|:------:|:---------:|:-----------:|
+| `src`  | `hello.c` | Implement the main function to print "Hello World" |
+| `include` | `hello.h` | (Optional) Header file if additional declarations are needed |
 
 ## Instructions:
-* Implement the files above.
-* Set up a C/C++ compiler:
-  - **Linux**: `sudo apt install build-essential`
-  - **macOS**: `xcode-select --install`
-  - **Windows**: Install MinGW or use WSL with `build-essential`.
-* Optionally, consider install Google Test for local testing: `sudo apt install libgtest-dev` (Linux).
-* The `build-test.yml` file is at `.github/workflows/`. The `.github` folder is hidden on Linux but visible on the GitHub repository.
-* Set `vars.CPP_GRADER_???` in `build-test.yml` in the repository settings (Settings > Secrets and Variables > Actions > Variables) to your grader image (e.g., `ghcr.io/your-org/cpp-pytest:latest`).
-* Set your AI feedback natural language in `build-test.yml` (e.g., `INPUT_EXPLANATION-IN: "English"`).
+1. **Implement the program**:
+   - In `src/hello.c`, write a C program that uses `printf` to output "Hello World" followed by a newline (`\n`).
+2. **Set up a C compiler**:
+   - **Linux**: Install `build-essential` using `sudo apt install build-essential`.
+   - **macOS**: Install Xcode command-line tools with `xcode-select --install`.
+   - **Windows**: Install MinGW or use WSL with `build-essential`.
+3. **Compile and run**:
+   - Compile: `gcc -o hello src/hello.c`
+   - Run: `./hello`
+4. **Optional testing**:
+   - Install Google Test for unit testing: `sudo apt install libgtest-dev` (Linux).
+   - Check the `.github/workflows/build-test.yml` for CI setup.
+5. **GitHub Actions**:
+   - The `build-test.yml` is located in `.github/workflows/`.
+   - Configure `vars.CPP_GRADER_???` in repository settings (Settings > Secrets and Variables > Actions > Variables) with your grader image (e.g., `ghcr.io/your-org/cpp-pytest:latest`).
+   - Set feedback language in `build-test.yml` (e.g., `INPUT_EXPLANATION-IN: "English"`).
 
 ## Example Run:
-* input
-Please add sample console input for your program here.
+* **Input**: None (no user input required).
+* **Output**:
 ```
-<prompt>: <value>
-```
-* output
-Please add sample console output for your program here.
-```
-<sample output>
+Hello World
 ```
 
 ## Tips:
-* Consider using `gdb` or other debuggers: Run `gdb ./<executable name>` and use commands like `break <function name>` and `run`.
-* Ensure your function handles edge cases.
-* Avoid undefined behaviors for the result.
+- Ensure you include `<stdio.h>` in `hello.c` for `printf`.
+- Use `gdb` for debugging: `gdb ./hello`, then set breakpoints with `break main` and run with `run`.
+- Check for compilation errors and ensure the output matches exactly "Hello World" with a newline.
+- Avoid extra spaces or characters in the output.
 
-__Happy coding!__
+**Happy coding!**
 
 ## Grading Criteria
 | Criteria | Points |
 |:--------:|:------:|
 | Is the build successful? | 2 |
 | Does the code follow coding style? | 1 |
-| Does the code pass the dynamic tests? | 2 |
+| Does the code print "Hello World" correctly? | 2 |
 
 ``Until here is common to all assignments.``
 
