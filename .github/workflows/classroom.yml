@@ -11,6 +11,7 @@ on:
 jobs:
   run-autograding-tests:
     runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
     env:
       CONTAINER_WORKSPACE: /app/workspace
       CONTAINER_TESTS: /tests
