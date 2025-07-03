@@ -9,7 +9,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build-test:
+  run-autograding-tests:
     runs-on: ubuntu-latest
     env:
       CONTAINER_WORKSPACE: /app/workspace
