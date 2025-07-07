@@ -1,51 +1,98 @@
-# C Hello World Assignment
+# C++ User Input Arithmetic Assignment
 
 ## Purpose:
-Learn the basics of C programming by creating a simple program that prints "Hello World" to the console.
+Learn to handle user input in C++ using `cin` and `cout`, perform type conversion, and execute arithmetic operations with formatted output.
 
 ## Description:
-This assignment introduces you to writing, compiling, and running a basic C program. You will create a program that outputs the string "Hello World" to the console.
+This assignment introduces C++ programming for mechanical engineering freshmen by incorporating user input. You will write a program that prompts the user to enter two integers and two floating-point numbers, performs arithmetic operations (addition, subtraction, and multiplication), and prints the results in a specific format.
 
 ## Exercise Files:
-| Folder | File Name | Description |
-|:------:|:---------:|:-----------:|
-| `src`  | `main.c` | Implement the main function to print "Hello World" |
+| Folder | File Name   | Description |
+|:------:|:-----------:|:-----------:|
+| `src`  | `main.cpp`  | Implement the main function to handle input, perform arithmetic, and print results |
+
+## Math Operators:
+| Operator | Description       | Example       |
+|:--------:|:-----------------:|:-------------:|
+| `+`      | Addition          | `a + b`       |
+| `-`      | Subtraction       | `a - b`       |
+| `*`      | Multiplication    | `a * b`       |
 
 ## Instructions:
 1. **Implement the program**:
-   - In `src/main.c`, write a C program that uses `printf` to output "Hello World" followed by a newline (`\n`).
-2. **Set up a C compiler**:
+   - In `src/main.cpp`, write a C++ program that:
+     - **Prompts the user**:
+       - Use `cout` to display clear prompts before reading input:
+         - For integers: `"Enter two integers (a b): "`
+         - For floats: `"Enter two floats (c d): "`
+       - This ensures the user knows to input two numbers separated by a space.
+     - Uses `cin` to read inputs.
+     - Stores `a` and `b` as `int` and `c` and `d` as `float`.
+     - **First Separator**: Right after reading inputs for `a`, `b`, `c`, and `d`, print a separator line using `cout << "##########\n";`.
+     - Performs arithmetic operations (`+`, `-`, `*`) on `a` and `b`, then on `c` and `d`.
+     - **Second Separator**: Print another separator line using `cout << "##########\n";` between `int` and `float` results.
+     - Prints the values and results in the format:
+       ```
+       ##########
+       a = [value]
+       b = [value]
+       a + b = [result]
+       a - b = [result]
+       a * b = [result]
+       ##########
+       c = [value]
+       d = [value]
+       c + d = [result]
+       c - d = [result]
+       c * d = [result]
+       ```
+     - Use `std::fixed` and `std::setprecision(2)` for `float` outputs to ensure two decimal places.
+   - Include `<iostream>` for `cin` and `cout`, and `<iomanip>` for `fixed` and `setprecision`.
+   - Use `using namespace std;` to simplify code for beginners.
+2. **Set up a C++ compiler**:
    - **Linux**: Install `build-essential` using `sudo apt install build-essential`.
    - **macOS**: Install Xcode command-line tools with `xcode-select --install`.
-   - **Windows**: Install MinGW or use WSL with `build-essential`.
+   - **Windows**: Install MinGW or Visual Studio (Community Edition).
 3. **Compile and run**:
-   - Compile: `gcc -o hello src/main.c`
-   - Run: `./hello`
-4. **Optional testing**:
-   - Install Google Test for unit testing: `sudo apt install libgtest-dev` (Linux).
-   - Check the `.github/workflows/build-test.yml` for CI setup.
+   - Compile: `g++ -o input_arithmetic src/main.cpp` (or use Visual Studio IDE).
+   - Run: `./input_arithmetic`
 
 ## Example Run:
-* **Input**: None (no user input required).
-* **Output**:
-```
-Hello World
-```
+- **Input**:
+  ```
+  Enter two integers (a b): 10 5
+  Enter two floats (c d): 1.5 2.5
+  ```
+- **Output**:
+  ```
+  ##########
+  a = 10
+  b = 5
+  a + b = 15
+  a - b = 5
+  a * b = 50
+  ##########
+  c = 1.50
+  d = 2.50
+  c + d = 4.00
+  c - d = -1.00
+  c * d = 3.75
+  ```
 
 ## Tips:
-- Ensure you include `<stdio.h>` in `main.c` for `printf`.
-- Use `gdb` for debugging: `gdb ./hello`, then set breakpoints with `break main` and run with `run`.
-- Check for compilation errors and ensure the output matches exactly "Hello World" with a newline.
-- Avoid extra spaces or characters in the output.
+- Use `cin` to read inputs: `cin >> a >> b;` for two integers.
+- For `float` output, include `<iomanip>` and use `cout << fixed << setprecision(2);`.
+- Debug with `gdb`: `gdb ./input_arithmetic`, set `break main`, then `run`.
+  - Visual Studio Code also has a debugger.
 
 **Happy coding!**
 
-## Grading Criteria
+## Grading Criteria:
 | Criteria | Points |
 |:--------:|:------:|
 | Is the build successful? | 2 |
 | Does the code follow coding style? | 1 |
-| Does the code print "Hello World" correctly? | 2 |
+| Does the result match the expectation? | 2 |
 
 ``Until here is common to all assignments.``
 
