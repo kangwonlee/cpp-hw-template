@@ -1,42 +1,107 @@
-# C Hello World Assignment
+# C Functions for Arithmetic Assignment
 
 ## Purpose:
-Learn the basics of C programming by creating a simple program that prints "Hello World" to the console.
+Learn to define and call basic functions in C for arithmetic operations, handle user input using `scanf` (Linux) or `scanf_s` (Windows/Visual Studio), perform type conversion, and execute operations with formatted output.
 
 ## Description:
-This assignment introduces you to writing, compiling, and running a basic C program. You will create a program that outputs the string "Hello World" to the console.
+This assignment extends basic C programming by requiring you to define custom functions for arithmetic operations. You will write a program that prompts the user to enter two integers and two floating-point numbers, converts the inputs, calls your defined functions to perform addition, subtraction, and multiplication, and prints the results in a specific format.
 
 ## Exercise Files:
 | Folder | File Name | Description |
 |:------:|:---------:|:-----------:|
-| `src`  | `main.c` | Implement the main function to print "Hello World" |
+| `src`  | `main.c` | Implement functions for arithmetic and the main function to handle input, call functions, and print results |
+
+## Math Operators:
+| Operator | Description       | Example       |
+|:--------:|:-----------------:|:-------------:|
+| `+`      | Addition          | `a + b`       |
+| `-`      | Subtraction       | `a - b`       |
+| `*`      | Multiplication    | `a * b`       |
+
+## Functions to implement:
+| Operation | function name    | return type       | input arguments |
+|:---------:|:----------------:|:-------------:|:-------------:|
+| `+`       | `add_int`        | `int`       | `int` a, `int` b |
+| `-`       | `sub_int`        | `int`       | `int` a, `int` b |
+| `*`       | `mul_int`        | `int`       | `int` a, `int` b |
+| `+`       | `add_float`      | `float`     | `float` c, `float` d |
+| `-`       | `sub_float`      | `float`     | `float` c, `float` d |
+| `*`       | `mul_float`      | `float`     | `float` c, `float` d |
 
 ## Instructions:
 1. **Implement the program**:
-   - In `src/main.c`, write a C program that uses `printf` to output "Hello World" followed by a newline (`\n`).
+   - In `src/main.c`, write a C program that:
+      - Defines the following functions before `main`:
+         - `int add_int(int x, int y)`: Returns the sum of two integers.
+         - `int sub_int(int x, int y)`: Returns the difference of two integers (x - y).
+         - `int mul_int(int x, int y)`: Returns the product of two integers.
+         - `float add_float(float x, float y)`: Returns the sum of two floats.
+         - `float sub_float(float x, float y)`: Returns the difference of two floats (x - y).
+         - `float mul_float(float x, float y)`: Returns the product of two floats.
+   - In `main()`:
+     - **Prompts the user**:
+       - Use `printf` to display clear prompts before reading input:
+         - For integers: `"Enter two integers (a b): "`
+         - For floats: `"Enter two floats (c d): "`
+       - This ensures the user knows to input two numbers separated by a space.
+     - Uses `scanf` (Linux/macOS) or `scanf_s` (Windows/Visual Studio) to read inputs.
+     - Stores `a` and `b` as `int` and `c` and `d` as `float`.
+     - **First Separator**: Right after reading inputs for `a`, `b`, `c`, and `d`, print a separator line using `printf("##########\n");`.
+     - Calls the defined functions to perform operations on `a` and `b`, then on `c` and `d`.
+     - **Second Separator**: Print another separator line using `printf("##########\n");` between `int` and `float` results.
+     - Prints the values and results in the format:
+       ```
+       ##########
+       a = [value]
+       b = [value]
+       a + b = [result]
+       a - b = [result]
+       a * b = [result]
+       ##########
+       c = [value]
+       d = [value]
+       c + d = [result]
+       c - d = [result]
+       c * d = [result]
+       ```
+     - Use `%.2f` for `float` outputs.
+   - Include `<stdio.h>` for `printf` and `scanf`/`scanf_s`.
 2. **Set up a C compiler**:
-   - **Linux**: Install `build-essential` using `sudo apt install build-essential`.
-   - **macOS**: Install Xcode command-line tools with `xcode-select --install`.
-   - **Windows**: Install MinGW or use WSL with `build-essential`.
+   - **Linux**: Install `build-essential` using `sudo apt install build-essential` (use `scanf`).
+   - **macOS**: Install Xcode command-line tools with `xcode-select --install` (use `scanf`).
+   - **Windows**: Install Visual Studio (use `scanf_s`) or MinGW (use `scanf`).
 3. **Compile and run**:
-   - Compile: `gcc -o hello src/main.c`
-   - Run: `./hello`
-4. **Optional testing**:
-   - Install Google Test for unit testing: `sudo apt install libgtest-dev` (Linux).
-   - Check the `.github/workflows/build-test.yml` for CI setup.
+   - Compile: `gcc -o functions_arithmetic src/main.c` (or use Visual Studio IDE).
+   - Run: `./functions_arithmetic`
 
 ## Example Run:
-* **Input**: None (no user input required).
-* **Output**:
-```
-Hello World
-```
+- **Input**:
+  ```
+  Enter two integers (a b): 10 5
+  Enter two floats (c d): 1.5 2.5
+  ```
+- **Output**:
+  ```
+  ##########
+  a = 10
+  b = 5
+  a + b = 15
+  a - b = 5
+  a * b = 50
+  ##########
+  c = 1.50
+  d = 2.50
+  c + d = 4.00
+  c - d = -1.00
+  c * d = 3.75
+  ```
 
 ## Tips:
-- Ensure you include `<stdio.h>` in `main.c` for `printf`.
-- Use `gdb` for debugging: `gdb ./hello`, then set breakpoints with `break main` and run with `run`.
-- Check for compilation errors and ensure the output matches exactly "Hello World" with a newline.
-- Avoid extra spaces or characters in the output.
+- Define functions with simple return statements using the appropriate operators.
+- For `scanf` (Linux/macOS): `scanf("%d %d", &a, &b);`. For `scanf_s` (Windows): `scanf_s("%d %d", &a, &b);`.
+  - We will learn what `&`s here mean later. It can be one of the reasons why C is so popular.
+- Debug with `gdb`: `gdb ./functions_arithmetic`, set `break main`, then `run`.
+  - Also, the Microsoft Visual Studio Code has a debugger.
 
 **Happy coding!**
 
@@ -45,7 +110,7 @@ Hello World
 |:--------:|:------:|
 | Is the build successful? | 2 |
 | Does the code follow coding style? | 1 |
-| Does the code print "Hello World" correctly? | 2 |
+| Does the result matches the expectation? | 2 |
 
 ``Until here is common to all assignments.``
 
