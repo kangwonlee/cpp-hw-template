@@ -112,7 +112,7 @@ This assignment extends basic C programming by requiring you to define custom fu
 | Does the code follow coding style? | 1 |
 | Does the result matches the expectation? | 2 |
 
-``Until here is common to all assignments.``
+``From here is common to all assignments.``
 
 ## Submission
 1. Modify the contents of the required file per instructions.
