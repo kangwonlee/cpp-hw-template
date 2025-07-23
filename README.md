@@ -56,7 +56,7 @@ __Happy coding!__
 | Does the code follow coding style? | 1 |
 | Does the code pass the dynamic tests? | 2 |
 
-``Until here is common to all assignments.``
+``From here is common to all assignments.``
 
 ## Submission
 1. Modify the contents of the required file per instructions.
