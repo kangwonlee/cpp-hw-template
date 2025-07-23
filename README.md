@@ -47,7 +47,7 @@ Hello World
 | Does the code follow coding style? | 1 |
 | Does the code print "Hello World" correctly? | 2 |
 
-``Until here is common to all assignments.``
+``From here is common to all assignments.``
 
 ## Submission
 1. Modify the contents of the required file per instructions.
@@ -88,7 +88,7 @@ Hello World
 * If you do not wish to have your submission used for any of these purposes, please inform the instructor before the assignment deadline.
 
 ## Acknowledgments
-* The template for this assignment is registered as a part of #C-2025-016393 in the Korea Copyright Commission.
+- Copyright © 2025 Kangwon Lee. Registered at the Korea Copyright Commission under #C-2025-027967 (as one of derivative works from original registration #C-2025-016393).
 * Various LLMs and AI tools helped implemeting the templates for this assignment.
   * Google Gemini Flash / Pro 2.5
   * xAI Grok3
