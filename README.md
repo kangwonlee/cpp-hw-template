@@ -94,7 +94,7 @@ This assignment introduces C++ programming for mechanical engineering freshmen b
 | Does the code follow coding style? | 1 |
 | Does the result match the expectation? | 2 |
 
-``Until here is common to all assignments.``
+``From here is common to all assignments.``
 
 ## Submission
 1. Modify the contents of the required file per instructions.
