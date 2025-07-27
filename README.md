@@ -1,10 +1,10 @@
 # C Functions for Arithmetic Assignment
 
 ## Purpose:
-Learn to define and call basic functions in C for arithmetic operations, handle user input using `scanf` (Linux) or `scanf_s` (Windows/Visual Studio), perform type conversion, and execute operations with formatted output.
+Learn to define and call basic functions in C for arithmetic operations, handle user input using `scanf` (Linux) or `scanf_s` (Windows/Visual Studio), perform type conversion, and execute operations with formatted output. This assignment introduces the `const` keyword for function parameters to indicate that inputs should not be modified within the function, promoting safer code practices.
 
 ## Description:
-This assignment extends basic C programming by requiring you to define custom functions for arithmetic operations. You will write a program that prompts the user to enter two integers and two floating-point numbers, converts the inputs, calls your defined functions to perform addition, subtraction, and multiplication, and prints the results in a specific format.
+This assignment extends basic C programming by requiring you to define custom functions for arithmetic operations. You will write a program that prompts the user to enter two integers and two floating-point numbers, converts the inputs, calls your defined functions to perform addition, subtraction, and multiplication, and prints the results in a specific format. Using `const` in function parameters ensures the arguments are treated as read-only, preventing accidental changes and improving code readability.
 
 ## Exercise Files:
 | Folder | File Name | Description |
@@ -21,23 +21,23 @@ This assignment extends basic C programming by requiring you to define custom fu
 ## Functions to implement:
 | Operation | function name    | return type       | input arguments |
 |:---------:|:----------------:|:-------------:|:-------------:|
-| `+`       | `add_int`        | `int`       | `int` a, `int` b |
-| `-`       | `sub_int`        | `int`       | `int` a, `int` b |
-| `*`       | `mul_int`        | `int`       | `int` a, `int` b |
-| `+`       | `add_float`      | `float`     | `float` c, `float` d |
-| `-`       | `sub_float`      | `float`     | `float` c, `float` d |
-| `*`       | `mul_float`      | `float`     | `float` c, `float` d |
+| `+`       | `add_int`        | `int`       | `const int` a, `const int` b |
+| `-`       | `sub_int`        | `int`       | `const int` a, `const int` b |
+| `*`       | `mul_int`        | `int`       | `const int` a, `const int` b |
+| `+`       | `add_float`      | `float`     | `const float` c, `const float` d |
+| `-`       | `sub_float`      | `float`     | `const float` c, `const float` d |
+| `*`       | `mul_float`      | `float`     | `const float` c, `const float` d |
 
 ## Instructions:
 1. **Implement the program**:
    - In `src/main.c`, write a C program that:
       - Defines the following functions before `main`:
-         - `int add_int(int x, int y)`: Returns the sum of two integers.
-         - `int sub_int(int x, int y)`: Returns the difference of two integers (x - y).
-         - `int mul_int(int x, int y)`: Returns the product of two integers.
-         - `float add_float(float x, float y)`: Returns the sum of two floats.
-         - `float sub_float(float x, float y)`: Returns the difference of two floats (x - y).
-         - `float mul_float(float x, float y)`: Returns the product of two floats.
+         - `int add_int(const int x, const int y)`: Returns the sum of two integers. Use `const` to ensure parameters are not modified.
+         - `int sub_int(const int x, const int y)`: Returns the difference of two integers (x - y).
+         - `int mul_int(const int x, const int y)`: Returns the product of two integers.
+         - `float add_float(const float x, const float y)`: Returns the sum of two floats.
+         - `float sub_float(const float x, const float y)`: Returns the difference of two floats (x - y).
+         - `float mul_float(const float x, const float y)`: Returns the product of two floats.
    - In `main()`:
      - **Prompts the user**:
        - Use `printf` to display clear prompts before reading input:
@@ -102,6 +102,7 @@ This assignment extends basic C programming by requiring you to define custom fu
   - We will learn what `&`s here mean later. It can be one of the reasons why C is so popular.
 - Debug with `gdb`: `gdb ./functions_arithmetic`, set `break main`, then `run`.
   - Also, the Microsoft Visual Studio Code has a debugger.
+- Using `const` in function parameters prevents accidental modification of inputs, which is a good practice for larger programs.
 
 **Happy coding!**
 
