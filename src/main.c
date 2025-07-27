@@ -10,13 +10,13 @@
 // Function prototypes: Declare the functions with their return types
 //  and parameters
 // 함수 프로토타입: 함수의 반환 형식과 매개변수를 선언함.
-int add_int(int a, int b);
-int sub_int(int a, int b);
-int mul_int(int a, int b);
+int add_int(const int a, const int b);
+int sub_int(const int a, const int b);
+int mul_int(const int a, const int b);
 
-float add_float(float c, float d);
-float sub_float(float c, float d);
-float mul_float(float c, float d);
+float add_float(const float c, const float d);
+float sub_float(const float c, const float d);
+float mul_float(const float c, const float d);
 
 int main() {
   // Declare variables to store user inputs
@@ -75,7 +75,7 @@ int main() {
 
 // Returns the sum of two integers (a + b)
 // 두 정수의 합을 반환하시오
-int add_int(int a, int b) {
+int add_int(const int a, const int b) {
   // TODO: Implement the addition
   // TODO: 덧셈 구현
 
@@ -86,7 +86,7 @@ int add_int(int a, int b) {
 
 // Returns the difference of two integers (a - b)
 // 두 정수의 차를 반환하시오
-int sub_int(int a, int b) {
+int sub_int(const int a, const int b) {
   // TODO: Implement the subtraction
   // TODO: 뺄셈 구현
 
@@ -97,7 +97,7 @@ int sub_int(int a, int b) {
 
 // Returns the product of two integers (a * b)
 // 두 정수의 곱을 반환하시오
-int mul_int(int a, int b) {
+int mul_int(const int a, const int b) {
   // TODO: Implement the multiplication
   // TODO: 곱셈 구현
 
@@ -108,7 +108,7 @@ int mul_int(int a, int b) {
 
 // Returns the sum of two floats (c + d)
 // 두 실수의 합을 반환하시오
-float add_float(float c, float d) {
+float add_float(const float c, const float d) {
   // TODO: Implement the addition
   // TODO: 덧셈 구현
 
@@ -119,7 +119,7 @@ float add_float(float c, float d) {
 
 // Returns the difference of two floats (c - d)
 // 두 실수의 차를 반환하시오
-float sub_float(float c, float d) {
+float sub_float(const float c, const float d) {
   // TODO: Implement the subtraction
   // TODO: 뺄셈 구현
 
@@ -130,7 +130,7 @@ float sub_float(float c, float d) {
 
 // Returns the product of two floats (c * d)
 // 두 실수의 곱을 반환하시오
-float mul_float(float c, float d) {
+float mul_float(const float c, const float d) {
   // TODO: Implement the multiplication
   // TODO: 곱셈 구현
 
