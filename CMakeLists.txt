@@ -1,6 +1,6 @@
 # begin CMakeLists.txt
 cmake_minimum_required(VERSION 3.10)
-project(HelloWorld CXX)
+project(MyProject CXX)
 
 # Build the main program
 add_executable(my_exec src/main.cpp)
