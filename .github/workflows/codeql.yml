@@ -41,6 +41,7 @@ jobs:
         upload: false
 
     - name: indent json
+      if: always()
       run: python -m json.tool ${{ github.workspace }}/${{ env.SHORT_SHA }}/cpp.sarif > ${{ github.workspace }}/codeql-${{ env.SHORT_SHA }}.json
 
     - name: Upload Report
