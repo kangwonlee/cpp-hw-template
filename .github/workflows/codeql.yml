@@ -4,7 +4,6 @@ name: "CodeQL"
 
 on:
   push:
-    branches: [main]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -21,6 +20,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    - name: Set Short SHA
+      id: short_sha
+      run: |
+        SHORT_SHA=$(echo $GITHUB_SHA | cut -c1-7)
+        echo "SHORT_SHA=$SHORT_SHA" >> $GITHUB_ENV
+
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
@@ -31,5 +36,20 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
+      with:
+        output: ${{ github.workspace }}/${{ env.SHORT_SHA }}
+        upload: false
+
+    - name: indent json
+      run: python -m json.tool ${{ github.workspace }}/${{ env.SHORT_SHA }}/cpp.sarif > ${{ github.workspace }}/codeql-${{ env.SHORT_SHA }}.json
+
+    - name: Upload Report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: artifacts-${{ env.SHORT_SHA }}
+        path: |
+          *.json
+          ${{ github.workspace }}/${{ env.SHORT_SHA }}/*.sarif
 
 # end .github/workflows/codeql.yml
