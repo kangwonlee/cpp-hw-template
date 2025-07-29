@@ -9,9 +9,41 @@ on:
     branches: [ main ]
 
 jobs:
-  run-autograding-tests:
+  check-environment-variables:
     runs-on: ubuntu-latest
     if: github.actor != 'github-classroom[bot]'
+    name: Check Environment Variables
+    env:
+      CR_PAT: ${{ secrets.CR_PAT }}
+      CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+      GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+      XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+      NVIDIA_NIM_API_KEY: ${{ secrets.NVIDIA_NIM_API_KEY }}
+      PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
+      DEFAULT_MODEL: ${{ secrets.DEFAULT_MODEL }}
+    steps:
+    - name: Check Variables
+      id: check-vars
+      run: |
+        echo "Checking required secrets..."
+        secrets=("CR_PAT" "CLAUDE_API_KEY" "GOOGLE_API_KEY" "XAI_API_KEY" "NVIDIA_NIM_API_KEY" "PERPLEXITY_API_KEY" "DEFAULT_MODEL")
+        all_secrets_set=true
+        for secret in "${secrets[@]}"; do
+          if [ -z "${!secret}" ]; then
+            echo "Error: Required secret $secret is not set."
+            all_secrets_set=false
+          else
+            echo "Secret $secret is set."
+          fi
+        done
+        if [ "$all_secrets_set" = false ]; then
+          echo "One or more required secrets are missing. Please set them in the repository secrets."
+          exit 1
+        fi
+
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    needs: check-environment-variables
     env:
       CONTAINER_WORKSPACE: /app/workspace
       CONTAINER_TESTS: /tests
