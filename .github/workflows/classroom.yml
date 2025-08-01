@@ -33,6 +33,12 @@ jobs:
         else
           echo "Secret CR_PAT is set."
         fi
+        # Check DEFAULT_MODEL (warning if unset)
+        if [ -z "${DEFAULT_MODEL}" ]; then
+          echo "Warning: DEFAULT_MODEL is not set. The AI tutor will use Gemini or a single available model. Consider setting it in Settings > Secrets and variables > Actions." | tee -a $GITHUB_STEP_SUMMARY
+        else
+          echo "DEFAULT_MODEL is set."
+        fi
         # Check API keys (at least one required)
         echo "Checking API keys..."
         api_keys=(
@@ -56,13 +62,6 @@ jobs:
           exit 1
         else
           echo "Found $api_key_count API key(s) set."
-        fi
-        # end checking API keys
-        # Check DEFAULT_MODEL (warning if unset)
-        if [ -z "${DEFAULT_MODEL}" ]; then
-          echo "Warning: DEFAULT_MODEL is not set. The AI tutor will use Gemini or a single available model. Consider setting it in Settings > Secrets and variables > Actions." | tee -a $GITHUB_STEP_SUMMARY
-        else
-          echo "DEFAULT_MODEL is set."
         fi
 
   run-autograding-tests:
