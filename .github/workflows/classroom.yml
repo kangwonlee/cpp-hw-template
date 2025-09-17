@@ -175,6 +175,9 @@ jobs:
             --volume ${{ github.workspace }}:${{ env.CONTAINER_WORKSPACE }}:ro \
             --volume ${{ env.WORKSPACE_OUTPUT }}:${{ env.CONTAINER_OUTPUT }}:rw \
             --workdir ${{ env.CONTAINER_TESTS }} \
+            --env GITHUB_WORKSPACE=${{ env.CONTAINER_WORKSPACE }} \
+            --env STUDENT_SRC_FOLDER=${{ env.CONTAINER_SRC }} \
+            --env C_FILENAME=${{ env.C_FILENAME }} \
             ${{ env.image_url }} \
             /bin/sh -c "cmake . -DCMAKE_BUILD_TYPE=Debug -DSTUDENT_DIR=${{ env.CONTAINER_WORKSPACE }} && make && python3 -m pytest --json-report --json-report-indent=4 --json-report-file=${{ env.CONTAINER_OUTPUT }}/${{ env.results }} test_dynamic.py"
         timeout: 2
