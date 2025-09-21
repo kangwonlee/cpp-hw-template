@@ -13,17 +13,23 @@ This assignment introduces you to writing, compiling, and running a basic C prog
 
 ## Instructions:
 1. **Implement the program**:
-   - In `src/main.c`, write a C program that uses `printf` to output "Hello World" followed by a newline (`\n`).
+  - In `src/main.c`, write a C program that uses `printf` to output "Hello World" followed by a newline (`\n`).
 2. **Set up a C compiler**:
-   - **Linux**: Install `build-essential` using `sudo apt install build-essential`.
-   - **macOS**: Install Xcode command-line tools with `xcode-select --install`.
-   - **Windows**: Install MinGW or use WSL with `build-essential`.
+  - **Linux**: Install `build-essential` using `sudo apt install build-essential`.
+  - **macOS**: Install Xcode command-line tools with `xcode-select --install`.
+  - **Windows**: Install MinGW or use WSL with `build-essential`.
 3. **Compile and run**:
-   - Compile: `gcc -o hello src/main.c`
-   - Run: `./hello`
-4. **Optional testing**:
-   - Install Google Test for unit testing: `sudo apt install libgtest-dev` (Linux).
-   - Check the `.github/workflows/build-test.yml` for CI setup.
+  - **Linux/macOS**/**Windows (MinGW)**:
+    - Compile: `gcc -o hello src/main.c`
+      - Run: `./hello`
+    - Alternatively, use the provided `CMakeLists.txt`:
+      ```sh
+      cmake .
+      make
+      ./my_exec
+      ```
+  - **Windows (Visual Studio)**:
+    - Use Visual Studio IDE: "Build" > "Build Solution" then "Debug" > "Start Debugging".
 
 ## Example Run:
 * **Input**: None (no user input required).
