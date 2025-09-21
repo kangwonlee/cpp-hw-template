@@ -1,4 +1,4 @@
-// begin exercise.cpp
+// begin src/exercise.c
 // please work on this file
 // 이 파일을 수정하여 제출하시오
 
@@ -21,4 +21,4 @@ void deallocate_integer(int *ptr) { free(ptr); }
 // manipulation)
 
 
-// end exercise.cpp
+// end src/exercise.c
