@@ -15,21 +15,28 @@ This assignment introduces you to writing, compiling, and running a basic C prog
 1. **Implement the program**:
   - In `src/main.c`, write a C program that uses `printf` to output "Hello World" followed by a newline (`\n`).
 2. **Set up a C compiler**:
-  - **Linux**: Install `build-essential` using `sudo apt install build-essential`.
-  - **macOS**: Install Xcode command-line tools with `xcode-select --install`.
-  - **Windows**: Install MinGW or use WSL with `build-essential`.
+  - **`gcc` / `g++` **
+    - **Linux**: Install `build-essential` using `sudo apt install build-essential`.
+    - **macOS**: Install Xcode command-line tools with `xcode-select --install`.
+    - **Windows**: Install MinGW or use WSL with `build-essential`.
+  - **Visual Studio**:
+    - Download and install Visual Studio with the "Desktop development with C++" workload.
 3. **Compile and run**:
   - **Linux/macOS**/**Windows (MinGW)**:
     - Compile: `gcc -o hello src/main.c`
       - Run: `./hello`
+        - On Windows (MinGW), use `hello.exe` instead.
     - Alternatively, use the provided `CMakeLists.txt`:
       ```sh
       cmake .
       make
-      ./my_exec
+      ./my_exec # Linux / OSX
+      my_exec.exe # Windows (MinGW)
       ```
   - **Windows (Visual Studio)**:
-    - Use Visual Studio IDE: "Build" > "Build Solution" then "Debug" > "Start Debugging".
+    - Open or start your project in Visual Studio
+    - "Build" > "Build Solution"
+    - "Debug" > "Start Debugging"
 
 ## Example Run:
 * **Input**: None (no user input required).
@@ -87,6 +94,50 @@ Hello World
 
 ### Resources
 * [How to Write a Git Commit Message](https://cbea.ms/git-commit/)
+
+## Cloning Your Repository
+You can work on your assignment locally by cloning your GitHub repository to your computer.
+* If your repository is private and in the organization, you need a personal access token (PAT) to clone it. Please create a PAT with minimal scopes with limited expiration date (e.g., 1 day for college computer labs).
+  * Follow [this guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) to create a PAT.
+* If you are using MS Visual Studio, follow [this guide](https://learn.microsoft.com/en-us/visualstudio/version-control/git-with-visual-studio?view=vs-2022) to clone your repository.
+* If you are using Git command line, follow these steps:
+  1. Open a terminal (Command Prompt, PowerShell, or Git Bash).
+  2. Navigate to the directory where you want to clone your repository.
+  3. Configure Git to cache your credentials for a limited amount of time (e.g., 15 minutes):
+    ```sh
+    git config --global credential.helper 'cache --timeout=900'
+    ```
+  4. Clone your repository using the following command:
+    ```sh
+    git clone https://<your github id>@github.com/<organization>/<repository>
+    ```
+    Replace `<your github id>`, `<organization>`, and `<repository>` with your actual GitHub username, organization name, and repository name.
+  5. If prompted for a password, enter your personal access token (PAT) instead of your GitHub password. (Never share your PAT with anyone.) (GitHub will not use passwords for authentication.)
+  6. After cloning, navigate into your repository folder:
+    ```sh
+    pushd <repository>
+    git config user.name "<your github id or name>"
+    git config user.email "<your email>"
+    ```
+  7. You can now edit files locally and use Git commands to manage your changes.
+  8. After making changes, use the following commands to commit and push your changes:
+    ```sh
+    git add <file>
+    git commit -m "Your descriptive commit message"
+    git push origin main
+    ```
+    Replace `<file>` with the name of the file you modified.
+  9. If you are using a different branch, replace `main` with your branch name in the `git push` command.
+  10. If you encounter any issues, refer to the [GitHub documentation](https://docs.github.com/en/get-started/quickstart/set-up-git) for troubleshooting.
+  11. If you want to stop caching your credentials, you can run:
+     ```sh
+     git config --global --unset credential.helper
+     ```
+  12. After finishing your work, you can delete the cloned repository from your local machine.
+     ```sh
+     popd
+     rmdir -rf <repository>
+     ```
 
 ## NOTICE REGARDING STUDENT SUBMISSIONS
 * Your submissions for this assignment may be used for various educational purposes. These purposes may include developing and improving educational tools, research, creating test cases, and training datasets.
