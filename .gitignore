@@ -85,3 +85,6 @@ CMakeFiles/
 *.cmake
 CMakeCache.txt
 Makefile
+
+# Visual Studio
+.vs/
