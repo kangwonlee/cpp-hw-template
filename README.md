@@ -202,7 +202,7 @@ To edit, build, and debug your C/C++ project, connect Visual Studio 2022 to WSL.
 4. **Debugging**:
     - Click next to a line number in the code editor to set a breakpoint (a red dot appears).
     - Start debugging by selecting "Debug" mode and clicking the green "Run" button.
-    - Use F10 (step over) or F11 (step into) to execute code line by line.
+    - Use <kbd>F10</kbd> (step over) or <kbd>F11</kbd> (step into) to execute code line by line.
     - Check variable values by hovering over them or using the "Watch" window.
     - View the call stack in the "Call Stack" window to see function relationships.
 
