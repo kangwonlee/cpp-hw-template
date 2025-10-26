@@ -67,7 +67,7 @@ __Happy coding!__
 * Press the <kbd>.</kbd> key while viewing the files in your repository on GitHub. This will launch a web version of VS Code.
 * Make your changes to the `main.c` (or `main.cpp`) file. (For some assignments, different filenames would be possible.)
 * To commit your changes, click on the branch icon on the left sidebar (the third icon after the magnifying glass).
-* Click the "+" sign next to the filename to stage your changes. (Staging prepares your changes for committing.)
+* Click the "+" sign next to the filename to stage your changes. (Staging prepares your changes for committing. It is like putting items in a box before shipping)
 * Write a brief description of your changes in the text box above.
 * Click "Commit & Push."
 * Click "Back to Repository" on the branch icon to return to your repository.
