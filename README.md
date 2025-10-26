@@ -65,7 +65,7 @@ __Happy coding!__
 
 ## How to Use the GitHub Online Editor
 * Press the <kbd>.</kbd> key while viewing the files in your repository on GitHub. This will launch a web version of VS Code.
-* Make your changes to the `exercise.c` (or `exercise.cpp`) file.
+* Make your changes to the `main.c` (or `main.cpp`) file. (Some assignments may require changes to other files; please follow the specific instructions for each assignment.)
 * To commit your changes, click on the branch icon on the left sidebar (the third icon after the magnifying glass).
 * Click the "+" sign next to the filename to stage your changes.
 * Write a brief description of your changes in the text box above.
@@ -82,7 +82,7 @@ __Happy coding!__
 * Avoid Vague Messages: Messages like "update" or "fix" can be too general.
 * Keep It Concise: Aim for 15-50 characters, but ensure clarity.
 * Examples:
-  * Good: "Add unit tests for factorial function in exercise.cpp"
+  * Good: "Add unit tests for factorial function in main.cpp"
   * Bad: "update", "fix 1", "changed file"
 
 ### Why It Matters
@@ -91,6 +91,25 @@ __Happy coding!__
 ### Resources
 * [How to Write a Git Commit Message](https://cbea.ms/git-commit/)
 
+## Visual Studio 2022 Git Clone Instructions (For University Computer Labs)
+* **Generate a GitHub Personal Access Token (PAT)**: Go to GitHub Settings > Developer Settings > Personal Access Tokens > Generate Token. Select the `repo` scope.
+* **Clone in Visual Studio 2022**:
+  1. Open VS 2022 > Git > Clone Repository.
+  2. Enter the GitHub URL[](https://github.com/username/repository.git).
+  3. For authentication, use your GitHub username and the PAT as the password.
+     * If issues arise, use the format https://<PAT>@github.com/username/repository and delete the repository completely before leaving the lab.
+  4. Choose a clone location and click Clone.
+* **Authentication in University Computer Labs**:
+  * Use a PAT for public computers. Avoid logging into GitHub via browser or VS to prevent credential caching risks.
+  * Enter the PAT and log out/end the session immediately after use.
+  * Use Git Credential Manager: In VS Settings > Git > Credential Manager, store the PAT (temporarily only).
+* **Protect Your GitHub Account After Class**:
+  * Delete/regenerate the PAT immediately (GitHub Settings > Tokens > Delete).
+  * Verify 2FA is enabled (SMS/app).
+  * Check account activity logs (Settings > Security Log).
+  * Log out of the computer and clear browser cache/cookies.
+  * Contact GitHub support if suspicious activity is detected.
+
 ## NOTICE REGARDING STUDENT SUBMISSIONS
 * Your submissions for this assignment may be used for various educational purposes. These purposes may include developing and improving educational tools, research, creating test cases, and training datasets.
 * The submissions will be anonymized and used solely for educational or research purposes. No personally identifiable information will be shared.
@@ -98,10 +117,10 @@ __Happy coding!__
 
 ## Acknowledgments
 - Copyright © 2025 Kangwon Lee. Registered at the Korea Copyright Commission under #C-2025-027967 (as one of derivative works from original registration #C-2025-016393).
-* Various LLMs and AI tools helped implemeting the templates for this assignment.
+* Various LLMs and AI tools helped implementing the templates for this assignment.
   * Google Gemini Flash / Pro 2.5
   * xAI Grok3
-  * Perplexity Sonar
   * Claude.ai 4.0 Sonnet
+  * Perplexity Sonar
 
 ``Until here is common to all assignments.``
