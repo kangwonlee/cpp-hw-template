@@ -97,12 +97,13 @@ __Happy coding!__
 
 To develop C/C++ programs in a Linux environment on Windows, you can use Windows Subsystem for Linux (WSL). Follow these steps to set up WSL and install necessary tools.
 
-1. Update the Windows to the latest version.
+1. Update the Windows (11 or higher) to the latest version.
 1. **Enable WSL**:
     - Open Control Panel > Programs > Turn Windows features on or off.
     - Check "Windows Subsystem for Linux" and "Virtual Machine Platform". Click OK and restart your computer if prompted.
 1. **Install WSL and Ubuntu**:
     - Open PowerShell as Administrator (search for "PowerShell" in the Start menu, right-click, and select "Run as administrator").
+    - Ensure you have an internet connection.
     - Run the command: `wsl --install`
         - This downloads and installs WSL.
     - Restart your computer when prompted.
@@ -119,7 +120,7 @@ To develop C/C++ programs in a Linux environment on Windows, you can use Windows
     - Restart Windows
 1. **Install C/C++ Tools and Git**:
     - From Windows menu, start Ubuntu 22.04
-    - In the Ubuntu terminal, run the following commands in order. Enter password when promoted.:
+    - In the Ubuntu terminal, run the following commands in order. When prompted for a password in Ubuntu, enter the Linux password you set during Ubuntu setup.:
         ```bash
         sudo apt update
         sudo apt upgrade -y
