@@ -195,6 +195,25 @@ To work on your assignment, you need to clone the GitHub repository to your WSL 
     - Run `pushd <repository>`
         - Example: `pushd MyProject`
     - Run `ls` to see the cloned project folder.
+1. You can now edit files locally and use Git commands to manage your changes.
+1. After making changes, use the following commands to commit and push your changes:
+    ```sh
+    git add <file>
+    git commit -m "Your descriptive commit message"
+    git push origin main
+    ```
+    * Replace `<file>` with the name of the file you modified.
+    * If you are using a different branch, replace `main` with your branch name in the `git push` command.
+1. If you encounter any issues, refer to the [GitHub documentation](https://docs.github.com/en/get-started/quickstart/set-up-git) for troubleshooting.
+1. If you want to stop caching your credentials, you can run:
+    ```sh
+    git config --global --unset credential.helper
+    ```
+1. After finishing your work, you can delete the cloned repository from your local machine.
+    ```sh
+    popd
+    rmdir -rf <repository>
+    ```
 
 </details>
 
