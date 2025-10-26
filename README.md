@@ -60,8 +60,12 @@ __Happy coding!__
 
 ## Submission
 1. Modify the contents of the required file per instructions.
-2. Use the GitHub online editor to commit and push your changes. (See below for detailed instructions)
-3. At the Actions tab of your GitHub repository, please check the result.
+    * Only modify `main.c` (or `main.cpp`) file in most of the cases.
+    * Do not change files unless explicitly instructed so.
+    * Especially ones under `.github/` folder and `README.md` must be preserved.
+1. Use the GitHub online editor to commit and push your changes. (See below for detailed instructions)
+1. At the Actions tab of your GitHub repository, please check the result.
+    * The Actions tab shows whether your code passes automated tests.
 
 ## How to Use the GitHub Online Editor
 * Press the <kbd>.</kbd> key while viewing the files in your repository on GitHub. This will launch a web version of VS Code.
@@ -98,6 +102,7 @@ __Happy coding!__
 To develop C/C++ programs in a Linux environment on Windows, you can use Windows Subsystem for Linux (WSL). Follow these steps to set up WSL and install necessary tools.
 
 1. Update the Windows (11 or higher) to the latest version.
+    - Open Settings > Windows Update > Check for updates.
 1. **Enable WSL**:
     - Open Control Panel > Programs > Turn Windows features on or off.
     - Check "Windows Subsystem for Linux" and "Virtual Machine Platform". Click OK and restart your computer if prompted.
@@ -108,7 +113,8 @@ To develop C/C++ programs in a Linux environment on Windows, you can use Windows
         - This downloads and installs WSL.
     - Restart your computer when prompted.
     - Start the PowerShell again as an Administrator again.
-    - Run the command: `wsl --set-default-version 2` (if you are not installing the WSL on a virtual machine)
+    - **Optional**
+        - Run the command: `wsl --set-default-version 2` (if you are not installing the WSL on a virtual machine)
     - Run the command: `wsl --list --online`
         - This shows available Linux distributions.
     - Run the command: `wsl --install Ubuntu-22.04`
@@ -158,6 +164,8 @@ To work on your assignment, you need to clone the GitHub repository to your WSL 
         - See https://git-scm.com/docs/git-credential-cache for more details.
 1. **Navigate to a Directory**:
     - Run `pushd /mnt/c/Users/<your windows username>/` to go to your Windows home directory.
+        - In WSL, `/mnt/c/` corresponds to the `C:\` drive in Windows.
+        - In Windows, `\\wsl$\Ubuntu-22.04\` will access the WSL file system.
     - Run `ls -l` to list files and folders.
         - If `source/` folder does not exist, run `mkdir source` to create the folder.
     - Run `pushd source` to go to the `source/` folder.
@@ -166,13 +174,21 @@ To work on your assignment, you need to clone the GitHub repository to your WSL 
             - If `repos/` folder does not exist, run `mkdir repos` to create the folder.
         - Run `pushd repos` to go to the `repos/` folder.
 1. **Start cloning the Repository**:
+    - Go to your assignment repository on GitHub in a web browser.
+    - Copy the repository URL (starting from `https`).
     - Run: `git clone https://<your-github-username>@github.com/<organization>/<repository>.git`
-    - Example: `git clone https://student123@github.com/MyOrg/MyProject.git`
+        - As the repository URL can be complicated, you may paste the copied URL after `git clone `.
+        - Example: `git clone https://student123@github.com/MyOrg/MyProject.git` for repository url `https://github.com/MyOrg/MyProject.git`.
+    - When prompted for a username, enter your GitHub username.
+    - When prompted for a password, follow the next step to create a Personal Access Token (PAT).
 1. **Create a GitHub Personal Access Token (PAT)**:
     - Go to GitHub > Settings > Developer settings > Personal access tokens > Tokens (classic) > Generate new token.
     - Select the `repo` scope
     - Set a short expiration date (one day?)
-    - Generate the token. Copy and save it securely (do not share it).
+    - Generate the token. Copy and store it securely (do not share it).
+        - As it will not be shown again, you may consider to store it in a password manager or a secure note.
+        - Never store this in a plain text file.
+    - **If used in a shared or public computer, before leaving the computer, make sure to delete it from the GitHub.com Developer settings.**
 1. **Enter PAT to finalize to cloning the repository**:
     - When prompted for a password, paste your PAT.
 1. **Verify Cloning**:
@@ -195,7 +211,7 @@ To edit, build, and debug your C/C++ project, connect Visual Studio 2022 to WSL.
     - Launch Visual Studio 2022.
     - Go to `File > Open > Folder...`.
     - Enter the path to your project in WSL: `C:\Users\<your-windows-username>\<path to the repository>`
-    - Example: `C:\Users\student\source\repos\MyProject`
+        - Example: `C:\Users\student\source\repos\MyProject`
     - Visual Studio will detect the WSL environment and connect (look for "Connecting to WSL" in the status bar).
 3. **Build and Run**:
     - In the toolbar, select the WSL target from the "Startup Item" dropdown.
