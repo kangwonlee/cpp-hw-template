@@ -78,7 +78,7 @@ jobs:
       C_FILENAME: main.c
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - name: Set Short SHA
       id: short_sha
