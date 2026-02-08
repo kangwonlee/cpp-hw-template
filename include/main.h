@@ -1,4 +1,4 @@
-// begin include/exercise.h
+// begin include/main.h
 
 #ifndef POINTERS_H  // Include guard
 #define POINTERS_H
@@ -8,4 +8,4 @@ void deallocate_integer(int* ptr);
 // ... other function declarations
 
 #endif
-// end include/exercise.h
+// end include/main.h

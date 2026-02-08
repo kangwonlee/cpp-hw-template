@@ -1,8 +1,8 @@
-// begin src/exercise.c
+// begin src/main.c
 // please work on this file
 // 이 파일을 수정하여 제출하시오
 
-#include "exercise.h"
+#include "main.h"
 #include <stdlib.h>
 
 int *allocate_integer(int value) {
@@ -21,4 +21,4 @@ void deallocate_integer(int *ptr) { free(ptr); }
 // manipulation)
 
 
-// end src/exercise.c
+// end src/main.c

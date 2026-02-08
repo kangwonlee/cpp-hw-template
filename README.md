@@ -16,8 +16,8 @@ Learn to implement and test the dynamic memory management in C/C++.
 
 | folder | file name | description |
 |:-----------:|:-----------:|:-----------:|
-| `src` | `exercise.c` | please implement functions here |
-| `include` | `exercise.h` | please add function prototypes here |
+| `src` | `main.c` | please implement functions here |
+| `include` | `main.h` | please add function prototypes here |
 
 ## Instructions:
 * Implement the files above.
@@ -26,9 +26,9 @@ Learn to implement and test the dynamic memory management in C/C++.
   - **macOS**: `xcode-select --install`
   - **Windows**: Install MinGW or use WSL with `build-essential`.
 * Optionally, consider install Google Test for local testing: `sudo apt install libgtest-dev` (Linux).
-* The `build-test.yml` file is at `.github/workflows/`. The `.github` folder is hidden on Linux but visible on the GitHub repository.
-* Set `vars.CPP_GRADER_???` in `build-test.yml` in the repository settings (Settings > Secrets and Variables > Actions > Variables) to your grader image (e.g., `ghcr.io/your-org/cpp-pytest:latest`).
-* Set your AI feedback natural language in `build-test.yml` (e.g., `INPUT_EXPLANATION-IN: "English"`).
+* The `classroom.yml` file is at `.github/workflows/`. The `.github` folder is hidden on Linux but visible on the GitHub repository.
+* Set `vars.CPP_GRADER_???` (replace `???` with assignment identifier) in the repository settings (Settings > Secrets and Variables > Actions > Variables) to your grader image (e.g., `ghcr.io/your-org/cpp-test-201:latest`).
+* Set your AI feedback natural language in `classroom.yml` (e.g., `INPUT_EXPLANATION-IN: "English"`).
 
 ## Example Run:
 * input
@@ -56,6 +56,74 @@ __Happy coding!__
 | Does the code follow coding style? | 1 |
 | Does the code pass the dynamic tests? | 2 |
 
+## Instructor Setup
+
+This template is designed for use with [GitHub Classroom](https://classroom.github.com/). Before distributing to students, configure the following in your GitHub organization or repository settings.
+
+### How the Two-Repo Pattern Works
+
+Each assignment requires **two** repositories:
+
+1. **Homework template** (this repo) — student-facing, contains the assignment skeleton (`src/main.c`, `include/main.h`) and the `classroom.yml` workflow that pulls the grader image and runs tests on student pushes.
+2. **Grader template** ([cpp-test-template](https://github.com/kangwonlee/cpp-test-template)) — instructor-facing, contains pytest test files, a CMakeLists.txt for dynamic tests, and a Dockerfile. Its CI builds and publishes a grader Docker image to GHCR.
+
+### Required Secrets
+
+Set these in **Settings > Secrets and variables > Actions > Secrets** at the organization level (recommended) or per repository.
+
+#### `CR_PAT` (required)
+
+A GitHub Personal Access Token used to pull the grader Docker image from GHCR.
+
+1. Go to **GitHub > Settings (user) > Developer settings > Personal access tokens > Fine-grained tokens**.
+2. Click **Generate new token**.
+3. Set the following permissions:
+
+| Permission | Access | Purpose |
+|:----------:|:------:|:--------|
+| Packages   | Read   | Pull grader Docker images from GHCR |
+
+4. Copy the token and save it as a repository or organization secret named `CR_PAT`.
+
+> If using GitHub Classroom, set `CR_PAT` as an **organization secret** so all student repos inherit it automatically.
+
+#### LLM API Keys (at least one required)
+
+The AI tutor step provides personalized feedback to students. At least one key must be set. The workflow validates this and fails early if none are configured.
+
+| Secret Name | Service | Where to Obtain |
+|:-----------:|:-------:|:----------------|
+| `CLAUDE_API_KEY` | Anthropic Claude | https://console.anthropic.com/ |
+| `GOOGLE_API_KEY` | Google Gemini | https://aistudio.google.com/ |
+| `XAI_API_KEY` | xAI Grok | https://console.x.ai/ |
+| `NVIDIA_NIM_API_KEY` | NVIDIA NIM | https://build.nvidia.com/ |
+| `PERPLEXITY_API_KEY` | Perplexity | https://perplexity.ai/settings/api |
+
+#### `DEFAULT_MODEL` (optional)
+
+Specifies the preferred LLM model. If unset, the AI tutor defaults to Gemini or uses whichever single key is available.
+
+### Repository Variable
+
+Set in **Settings > Secrets and variables > Actions > Variables** tab.
+
+#### `CPP_GRADER_???`
+
+Replace `???` with your assignment identifier (e.g., `CPP_GRADER_201` for assignment 201). The value is the full GHCR image URL of the grader, e.g.:
+
+```
+ghcr.io/your-org/cpp-test-201:latest
+```
+
+### Customizing for a New Assignment
+
+1. Use this template to create a new repository (click **Use this template** on GitHub).
+2. Edit `README.md` — fill in the Purpose, Description, function table, Example Run, and Tips sections.
+3. Edit `src/main.c` and `include/main.h` — provide starter code or empty function stubs.
+4. Update the grading criteria table if point allocations differ.
+5. Set `INPUT_EXPLANATION-IN` in `classroom.yml` to the desired feedback language (default: `"English"`).
+6. Set the `CR_PAT` secret, at least one LLM API key, and the `CPP_GRADER_???` variable.
+
 ``From here is common to all assignments.``
 
 ## Submission
@@ -81,7 +149,7 @@ __Happy coding!__
 * A good commit message clearly explains what you changed and why, making it easier for you to understand your work later.
 
 ### Guidelines for Commit Messages
-* Describe the change specifically, e.g., "Add factorial function to exercise.cpp" or "Fix overflow in factorial calculation".
+* Describe the change specifically, e.g., "Add factorial function to main.c" or "Fix overflow in factorial calculation".
 * Use Action Verbs: Start with words like "Add", "Fix", "Update", or "Refactor".
 * Avoid Vague Messages: Messages like "update" or "fix" can be too general.
 * Keep It Concise: Aim for 15-50 characters, but ensure clarity.
