@@ -67,6 +67,10 @@ __Happy coding!__
 1. At the Actions tab of your GitHub repository, please check the result.
     * The Actions tab shows whether your code passes automated tests.
 
+## Shared Computer Warning
+
+* **University labs**: Always use **incognito/private mode** (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd>) to access GitHub. Closing the window automatically logs you out.
+
 ## How to Use the GitHub Online Editor
 * Press the <kbd>.</kbd> key while viewing the files in your repository on GitHub. This will launch a web version of VS Code.
 * Make your changes to the `main.c` (or `main.cpp`) file. (For some assignments, different filenames would be possible.)
@@ -94,6 +98,7 @@ __Happy coding!__
 
 ### Resources
 * [How to Write a Git Commit Message](https://cbea.ms/git-commit/)
+* [좋은 Git Commit message 작성법](https://velog.io/@k-minsik/좋은-Git-Commit-message-작성법)
 
 ## Setting Up WSL for C/C++ Development on Windows
 <details>
@@ -253,8 +258,8 @@ To edit, build, and debug your C/C++ project, connect Visual Studio 2022 to WSL.
 * Copyright © 2025 Kangwon Lee. Registered at the Korea Copyright Commission under #C-2025-027967 (as one of derivative works from original registration #C-2025-016393).
 * Various LLMs and AI tools helped implement the templates for this assignment.
     - Google Gemini
-    - xAI Grok
+    - xAI Grok3
     - Claude.ai
-    - Perplexity
+    - Perplexity Sonar
 
 ``Until here is common to all assignments.``
